@@ -517,6 +517,11 @@ body {
 }
 
 .status.warning {
+    background-color: rgba(243, 156, 18156,18,0.1);
+    color: var(--warning-color);
+}
+
+.status.warning {
     background-color: rgba(243, 156, 18, 0.1);
     color: var(--warning-color);
 }
@@ -781,54 +786,6 @@ body {
 .file-name {
     font-size: 14px;
     color: var(--light-text);
-}
-
-/* Chart Container */
-.chart-container {
-    width: 100%;
-    height: 300px;
-    position: relative;
-}
-
-.chart-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: var(--light-text);
-}
-
-.chart-placeholder i {
-    font-size: 48px;
-    margin-bottom: 15px;
-}
-
-.chart-placeholder p {
-    margin-bottom: 20px;
-}
-
-.chart-legend {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.chart-legend li {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 12px;
-}
-
-.legend-color {
-    width: 12px;
-    height: 12px;
-    border-radius: 2px;
 }
 
 /* Carnet Preview */
