@@ -14,17 +14,10 @@
 * dashboard_productos (CRUD productos, inventario)
 * dashboard_gestion_clientes (CRUD clientes, detalle cliente)
 * dashboard_gestion_ventas (CRUD ventas, gestion de puntos)
+* dashboard_gestion_promociones (CRUD promociones, editor de DiarioDeCerveza)
 
 
 ## Interfaces faltantes
-
-### Departamento de Gestión de Promociones
-
-* Dashboard de Promociones
-
-* Gestión de Promociones
-
-* Editor de DiarioDeCerveza
 
 ### Departamento de Gestión de Eventos
 
