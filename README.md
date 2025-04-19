@@ -6,10 +6,10 @@
 * Home
 * checkout
 * profile
+* events
 
 ## Interfaces a falta de CSS
 
-* events
 * diario
 * catalog
 * cart
