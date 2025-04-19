@@ -4,13 +4,13 @@
 
 * Inicio
 * Home
+* checkout
 
 ## Interfaces a falta de CSS
 
 * profile
 * events
 * diario
-* checkout
 * catalog
 * cart
 
