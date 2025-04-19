@@ -13,18 +13,10 @@
 * dashboard_proveedores (CRUD proveedores, gestion de cuotas, gestion de fichas)
 * dashboard_productos (CRUD productos, inventario)
 * dashboard_gestion_clientes (CRUD clientes, detalle cliente)
+* dashboard_gestion_ventas (CRUD ventas, gestion de puntos)
 
 
 ## Interfaces faltantes
-
-### Departamento de Gestión de Ventas
-
-* Dashboard de Ventas
-
-* Gestión de Ventas
-
-* Gestión de Puntos
-
 
 ### Departamento de Gestión de Promociones
 
