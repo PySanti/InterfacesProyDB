@@ -8,10 +8,10 @@
 * profile
 * events
 * diario
+* catalog
 
 ## Interfaces a falta de CSS
 
-* catalog
 * cart
 
 ## Interfaces a falta de todo
