@@ -9,12 +9,10 @@
 * events
 * diario
 * catalog
-
-## Interfaces a falta de CSS
-
 * cart
 
-## Interfaces a falta de todo
+
+## Interfaces faltantes
 
 ### Departamento de Gestión de Proveedores
 
