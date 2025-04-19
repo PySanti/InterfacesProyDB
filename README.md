@@ -5,10 +5,10 @@
 * Inicio
 * Home
 * checkout
+* profile
 
 ## Interfaces a falta de CSS
 
-* profile
 * events
 * diario
 * catalog
