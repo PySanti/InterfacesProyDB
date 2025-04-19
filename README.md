@@ -11,18 +11,10 @@
 * catalog
 * cart
 * dashboard_proveedores (CRUD proveedores, gestion de cuotas, gestion de fichas)
+* dashboard_productos (CRUD productos, inventario)
 
 
 ## Interfaces faltantes
-
-### Departamento de Gestión de Productos
-
-* Dashboard de Productos
-
-* Gestión de Productos
-
-* Reportes de Inventario
-
 
 ### Departamento de Gestión de Clientes
 
