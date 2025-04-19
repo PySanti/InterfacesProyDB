@@ -7,10 +7,10 @@
 * checkout
 * profile
 * events
+* diario
 
 ## Interfaces a falta de CSS
 
-* diario
 * catalog
 * cart
 
