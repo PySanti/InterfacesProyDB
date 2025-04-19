@@ -10,18 +10,10 @@
 * diario
 * catalog
 * cart
+* dashboard_proveedores (CRUD proveedores, gestion de cuotas, gestion de fichas)
 
 
 ## Interfaces faltantes
-
-### Departamento de Gestión de Proveedores
-
-* Dashboard Proveedores
-
-* Gestión de Proveedores
-
-* Gestión de Cuotas de afiliación.
-
 
 ### Departamento de Gestión de Productos
 
