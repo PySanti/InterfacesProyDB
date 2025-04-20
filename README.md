@@ -15,18 +15,10 @@
 * dashboard_gestion_clientes (CRUD clientes, detalle cliente)
 * dashboard_gestion_ventas (CRUD ventas, gestion de puntos)
 * dashboard_gestion_promociones (CRUD promociones, editor de DiarioDeCerveza)
+* dashboard_gestion_eventos (CRUD eventos)
 
 
 ## Interfaces faltantes
-
-### Departamento de Gestión de Eventos
-
-* Gestión de Eventos
-
-* Verificación de Asistentes
-
-* Reportes Post-Evento
-
 
 ### Jefe de Compras
 
