@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Gestión de Órdenes de Reposición - ACAUCAB</title>
+    <link rel="stylesheet" href="../css/dashboard_gestion_ordenes_reposicion.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <h1>ACAUCAB</h1>
+                <p>Panel de Administración</p>
+            </div>
+            
+            <div class="sidebar-user">
+                <div class="user-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="user-info">
+                    <h3>Roberto Méndez</h3>
+                    <p>Jefe de Compras</p>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active"><a href="#ordenes" data-section="ordenes"><i class="fas fa-clipboard-list"></i> Órdenes de Reposición</a></li>
+                    <li><a href="#historial" data-section="historial"><i class="fas fa-history"></i> Historial</a></li>
+                    <li><a href="#proveedores" data-section="proveedores"><i class="fas fa-truck"></i> Proveedores</a></li>
+                    <li><a href="#reportes" data-section="reportes"><i class="fas fa-chart-bar"></i> Reportes</a></li>
+                    <li><a href="#configuracion" data-section="configuracion"><i class="fas fa-cog"></i> Configuración</a></li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="index.html" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="dashboard-content">
+            <header class="content-header">
+                <div class="header-left">
+                    <button class="toggle-sidebar"><i class="fas fa-bars"></i></button>
+                    <h2>Dashboard de Gestión de Órdenes de Reposición</h2>
+                </div>
+                <div class="header-right">
+                    <div class="search-box">
+                        <input type="text" placeholder="Buscar orden...">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="notifications">
+                        <button class="notification-btn"><i class="fas fa-bell"></i><span class="badge">3</span></button>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Órdenes de Reposición Section -->
+            <section class="content-section active" id="ordenes-section">
+                <div class="section-header">
+                    <h2>Órdenes de Reposición</h2>
+                </div>
+                
+                <div class="dashboard-cards">
+                    <div class="dashboard-card">
+                        <div class="card-icon warning"><i class="fas fa-exclamation-circle"></i></div>
+                        <div class="card-info">
+                            <h3>5</h3>
+                            <p>Órdenes Pendientes</p>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <div class="card-icon success"><i class="fas fa-check-circle"></i></div>
+                        <div class="card-info">
+                            <h3>12</h3>
+                            <p>Órdenes Aprobadas</p>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <div class="card-icon info"><i class="fas fa-truck-loading"></i></div>
+                        <div class="card-info">
+                            <h3>8</h3>
+                            <p>Órdenes en Tránsito</p>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <div class="card-icon"><i class="fas fa-calendar-check"></i></div>
+                        <div class="card-info">
+                            <h3>45</h3>
+                            <p>Órdenes Completadas</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="filter-bar">
+                    <div class="filter-group">
+                        <label for="filter-estado">Estado:</label>
+                        <select id="filter-estado">
+                            <option value="all">Todos los estados</option>
+                            <option value="pendiente">Pendiente de Aprobación</option>
+                            <option value="aprobada">Aprobada</option>
+                            <option value="en-transito">En Tránsito</option>
+                            <option value="completada">Completada</option>
+                            <option value="rechazada">Rechazada</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="filter-proveedor">Proveedor:</label>
+                        <select id="filter-proveedor">
+                            <option value="all">Todos los proveedores</option>
+                            <option value="polar">Empresas Polar</option>
+                            <option value="regional">Cervecería Regional</option>
+                            <option value="zulia">Cervecería Zulia</option>
+                            <option value="tovar">Cervecería Tovar</option>
+                            <option value="solera">Cervecería Solera</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="filter-fecha">Fecha:</label>
+                        <select id="filter-fecha">
+                            <option value="all">Todas las fechas</option>
+                            <option value="hoy">Hoy</option>
+                            <option value="semana">Esta semana</option>
+                            <option value="mes">Este mes</option>
+                            <option value="trimestre">Último trimestre</option>
+                        </select>
+                    </div>
+                    
+                    <button class="secondary-btn"><i class="fas fa-filter"></i> Filtrar</button>
+                    <button class="outline-btn"><i class="fas fa-sync-alt"></i> Reiniciar</button>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Órdenes Pendientes de Aprobación</h3>
+                        <div class="card-actions">
+                            <select id="sort-orders">
+                                <option value="date-desc">Fecha (Reciente a Antigua)</option>
+                                <option value="date-asc">Fecha (Antigua a Reciente)</option>
+                                <option value="proveedor-asc">Proveedor (A-Z)</option>
+                                <option value="proveedor-desc">Proveedor (Z-A)</option>
+                                <option value="urgencia-desc">Urgencia (Mayor a Menor)</option>
+                            </select>
+                            <button class="export-btn"><i class="fas fa-download"></i> Exportar</button>
+                        </div>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID Orden</th>
+                                    <th>Fecha Generación</th>
+                                    <th>Proveedor</th>
+                                    <th>Productos</th>
+                                    <th>Valor Total</th>
+                                    <th>Urgencia</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ORD001</td>
+                                    <td>01/07/2025</td>
+                                    <td>Empresas Polar</td>
+                                    <td>3</td>
+                                    <td>$1,250.00</td>
+                                    <td><span class="badge warning">Media</span></td>
+                                    <td><span class="status pending">Pendiente</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view" title="Ver detalles"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn approve" title="Aprobar"><i class="fas fa-check"></i></button>
+                                        <button class="action-btn reject" title="Rechazar"><i class="fas fa-times"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ORD002</td>
+                                    <td>02/07/2025</td>
+                                    <td>Cervecería Regional</td>
+                                    <td>2</td>
+                                    <td>$980.00</td>
+                                    <td><span class="badge danger">Alta</span></td>
+                                    <td><span class="status pending">Pendiente</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view" title="Ver detalles"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn approve" title="Aprobar"><i class="fas fa-check"></i></button>
+                                        <button class="action-btn reject" title="Rechazar"><i class="fas fa-times"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ORD003</td>
+                                    <td>02/07/2025</td>
+                                    <td>Cervecería Zulia</td>
+                                    <td>1</td>
+                                    <td>$450.00</td>
+                                    <td><span class="badge warning">Media</span></td>
+                                    <td><span class="status pending">Pendiente</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view" title="Ver detalles"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn approve" title="Aprobar"><i class="fas fa-check"></i></button>
+                                        <button class="action-btn reject" title="Rechazar"><i class="fas fa-times"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ORD004</td>
+                                    <td>03/07/2025</td>
+                                    <td>Cervecería Tovar</td>
+                                    <td>2</td>
+                                    <td>$875.00</td>
+                                    <td><span class="badge danger">Alta</span></td>
+                                    <td><span class="status pending">Pendiente</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view" title="Ver detalles"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn approve" title="Aprobar"><i class="fas fa-check"></i></button>
+                                        <button class="action-btn reject" title="Rechazar"><i class="fas fa-times"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ORD005</td>
+                                    <td>03/07/2025</td>
+                                    <td>Cervecería Solera</td>
+                                    <td>1</td>
+                                    <td>$320.00</td>
+                                    <td><span class="badge success">Baja</span></td>
+                                    <td><span class="status pending">Pendiente</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view" title="Ver detalles"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn approve" title="Aprobar"><i class="fas fa-check"></i></button>
+                                        <button class="action-btn reject" title="Rechazar"><i class="fas fa-times"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="table-footer">
+                        <div class="pagination">
+                            <button class="page-btn prev"><i class="fas fa-chevron-left"></i></button>
+                            <button class="page-btn active">1</button>
+                            <button class="page-btn">2</button>
+                            <button class="page-btn next"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="page-info">
+                            Mostrando 1-5 de 5 órdenes pendientes
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Órdenes Recientes</h3>
+                        <div class="card-actions">
+                            <button class="export-btn"><i class="fas fa-download"></i> Exportar</button>
+                        </div>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID Orden</th>
+                                    <th>Fecha Generación</th>
+                                    <th>Fecha Aprobación</th>
+                                    <th>Proveedor</th>
+                                    <th>Productos</th>
+                                    <th>Valor Total</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ORD000</td>
+                                    <td>30/06/2025</td>
+                                    <td>30/06/2025</td>
+                                    <td>Empresas Polar</td>
+                                    <td>4</td>
+                                    <td>$1,850.00</td>
+                                    <td><span class="status active">Aprobada</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view" title="Ver detalles"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn download" title="Descargar"><i class="fas fa-download"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ORD-1</td>
+                                    <td>29/06/2025</td>
+                                    <td>29/06/2025</td>
+                                    <td>Cervecería Zulia</td>
+                                    <td>2</td>
+                                    <td>$780.00</td>
+                                    <td><span class="status info">En Tránsito</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view" title="Ver detalles"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn download" title="Descargar"><i class="fas fa-download"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ORD-2</td>
+                                    <td>28/06/2025</td>
+                                    <td>28/06/2025</td>
+                                    <td>Cervecería Regional</td>
+                                    <td>3</td>
+                                    <td>$1,200.00</td>
+                                    <td><span class="status info">En Tránsito</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view" title="Ver detalles"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn download" title="Descargar"><i class="fas fa-download"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ORD-3</td>
+                                    <td>27/06/2025</td>
+                                    <td>-</td>
+                                    <td>Cervecería Tovar</td>
+                                    <td>1</td>
+                                    <td>$350.00</td>
+                                    <td><span class="status inactive">Rechazada</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view" title="Ver detalles"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn download" title="Descargar"><i class="fas fa-download"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ORD-4</td>
+                                    <td>25/06/2025</td>
+                                    <td>25/06/2025</td>
+                                    <td>Cervecería Solera</td>
+                                    <td>2</td>
+                                    <td>$920.00</td>
+                                    <td><span class="status success">Completada</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view" title="Ver detalles"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn download" title="Descargar"><i class="fas fa-download"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="card-footer">
+                        <a href="#historial" class="view-all">Ver historial completo <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Historial Section -->
+            <section class="content-section" id="historial-section">
+                <div class="section-header">
+                    <h2>Historial de Órdenes</h2>
+                </div>
+                
+                <div class="filter-bar">
+                    <div class="filter-group">
+                        <label for="historial-estado">Estado:</label>
+                        <select id="historial-estado">
+                            <option value="all">Todos los estados</option>
+                            <option value="aprobada">Aprobada</option>
+                            <option value="en-transito">En Tránsito</option>
+                            <option value="completada">Completada</option>
+                            <option value="rechazada">Rechazada</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="historial-proveedor">Proveedor:</label>
+                        <select id="historial-proveedor">
+                            <option value="all">Todos los proveedores</option>
+                            <option value="polar">Empresas Polar</option>
+                            <option value="regional">Cervecería Regional</option>
+                            <option value="zulia">Cervecería Zulia</option>
+                            <option value="tovar">Cervecería Tovar</option>
+                            <option value="solera">Cervecería Solera</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="historial-fecha-inicio">Desde:</label>
+                        <input type="date" id="historial-fecha-inicio">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="historial-fecha-fin">Hasta:</label>
+                        <input type="date" id="historial-fecha-fin">
+                    </div>
+                    
+                    <button class="secondary-btn"><i class="fas fa-filter"></i> Filtrar</button>
+                    <button class="outline-btn"><i class="fas fa-sync-alt"></i> Reiniciar</button>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Historial Completo</h3>
+                        <div class="card-actions">
+                            <select id="sort-historial">
+                                <option value="date-desc">Fecha (Reciente a Antigua)</option>
+                                <option value="date-asc">Fecha (Antigua a Reciente)</option>
+                                <option value="proveedor-asc">Proveedor (A-Z)</option>
+                                <option value="proveedor-desc">Proveedor (Z-A)</option>
+                                <option value="valor-desc">Valor (Mayor a Menor)</option>
+                                <option value="valor-asc">Valor (Menor a Mayor)</option>
+                            </select>
+                            <button class="export-btn"><i class="fas fa-download"></i> Exportar</button>
+                        </div>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID Orden</th>
+                                    <th>Fecha Generación</th>
+                                    <th>Fecha Aprobación</th>
+                                    <th>Fecha Recepción</th>
+                                    <th>Proveedor</th>
+                                    <th>Productos</th>
+                                    <th>Valor Total</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ORD000</td>
+                                    <td>30/06/2025</td>
+                                    <td>30/06/2025</td>
+                                    <td>-</td>
+                                    <td>Empresas Polar</td>
+                                    <td>4</td>
+                                    <td>$1,850.00</td>
+                                    <td><span class="status active">Aprobada</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view" title="Ver detalles"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn download" title="Descargar"><i class="fas fa-download"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ORD-1</td>
+                                    <td>29/06/2025</td>
+                                    <td>29/06/2025</td>
+                                    <td>-</td>
+                                    <td>Cervecería Zulia</td>
+                                    <td>2</td>
+                                    <td>$780.00</td>
+                                    <td><span class="status info">En Tránsito</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view" title="Ver detalles"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn download" title="Descargar"><i class="fas fa-download"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ORD-2</td>
+                                    <td>28/06/2025</td>
+                                    <td>28/06/2025</td>
+                                    <td>-</td>
+                                    <td>Cervecería Regional</td>
+                                    <td>3</td>
+                                    <td>$1,200.00</td>
+                                    <td><span class="status info">En Tránsito</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view" title="Ver detalles"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn download" title="Descargar"><i class="fas fa-download"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ORD-3</td>
+                                    <td>27/06/2025</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>Cervecería Tovar</td>
+                                    <td>1</td>
+                                    <td>$350.00</td>
+                                    <td><span class="status inactive">Rechazada</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view" title="Ver detalles"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn download" title="Descargar"><i class="fas fa-download"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ORD-4</td>
+                                    <td>25/06/2025</td>
+                                    <td>25/06/2025</td>
+                                    <td>27/06/2025</td>
+                                    <td>Cervecería Solera</td>
+                                    <td>2</td>
+                                    <td>$920.00</td>
+                                    <td><span class="status success">Completada</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view" title="Ver detalles"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn download" title="Descargar"><i class="fas fa-download"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ORD-5</td>
+                                    <td>20/06/2025</td>
+                                    <td>20/06/2025</td>
+                                    <td>23/06/2025</td>
+                                    <td>Empresas Polar</td>
+                                    <td>5</td>
+                                    <td>$2,100.00</td>
+                                    <td><span class="status success">Completada</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view" title="Ver detalles"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn download" title="Descargar"><i class="fas fa-download"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ORD-6</td>
+                                    <td>15/06/2025</td>
+                                    <td>15/06/2025</td>
+                                    <td>18/06/2025</td>
+                                    <td>Cervecería Regional</td>
+                                    <td>3</td>
+                                    <td>$1,450.00</td>
+                                    <td><span class="status success">Completada</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view" title="Ver detalles"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn download" title="Descargar"><i class="fas fa-download"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ORD-7</td>
+                                    <td>10/06/2025</td>
+                                    <td>10/06/2025</td>
+                                    <td>12/06/2025</td>
+                                    <td>Cervecería Zulia</td>
+                                    <td>2</td>
+                                    <td>$850.00</td>
+                                    <td><span class="status success">Completada</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view" title="Ver detalles"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn download" title="Descargar"><i class="fas fa-download"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="table-footer">
+                        <div class="pagination">
+                            <button class="page-btn prev"><i class="fas fa-chevron-left"></i></button>
+                            <button class="page-btn active">1</button>
+                            <button class="page-btn">2</button>
+                            <button class="page-btn">3</button>
+                            <button class="page-btn next"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="page-info">
+                            Mostrando 1-8 de 45 órdenes
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Proveedores Section -->
+            <section class="content-section" id="proveedores-section">
+                <!-- Contenido de la sección de provee  id="proveedores-section">
+                <!-- Contenido de la sección de proveedores -->
+                <div class="section-header">
+                    <h2>Proveedores</h2>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Lista de Proveedores</h3>
+                        <div class="card-actions">
+                            <button class="export-btn"><i class="fas fa-download"></i> Exportar</button>
+                        </div>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Logo</th>
+                                    <th>Nombre</th>
+                                    <th>Contacto</th>
+                                    <th>Teléfono</th>
+                                    <th>Email</th>
+                                    <th>Órdenes Activas</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>PROV001</td>
+                                    <td><img src="../img/logo-polar.jpg" alt="Empresas Polar" class="product-thumbnail"></td>
+                                    <td>Empresas Polar</td>
+                                    <td>Juan Rodríguez</td>
+                                    <td>+58 212-555-1234</td>
+                                    <td>ventas@polar.com</td>
+                                    <td>2</td>
+                                    <td><span class="status active">Activo</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view" title="Ver detalles"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn edit" title="Editar"><i class="fas fa-edit"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>PROV002</td>
+                                    <td><img src="../img/logo-regional.jpg" alt="Cervecería Regional" class="product-thumbnail"></td>
+                                    <td>Cervecería Regional</td>
+                                    <td>María Gómez</td>
+                                    <td>+58 261-555-6789</td>
+                                    <td>distribución@regional.com</td>
+                                    <td>1</td>
+                                    <td><span class="status active">Activo</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view" title="Ver detalles"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn edit" title="Editar"><i class="fas fa-edit"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>PROV003</td>
+                                    <td><img src="../img/logo-zulia.jpg" alt="Cervecería Zulia" class="product-thumbnail"></td>
+                                    <td>Cervecería Zulia</td>
+                                    <td>Pedro Pérez</td>
+                                    <td>+58 261-555-4321</td>
+                                    <td>ventas@zulia.com</td>
+                                    <td>1</td>
+                                    <td><span class="status active">Activo</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view" title="Ver detalles"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn edit" title="Editar"><i class="fas fa-edit"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>PROV004</td>
+                                    <td><img src="../img/logo-tovar.jpg" alt="Cervecería Tovar" class="product-thumbnail"></td>
+                                    <td>Cervecería Tovar</td>
+                                    <td>Ana Martínez</td>
+                                    <td>+58 274-555-8765</td>
+                                    <td>distribución@tovar.com</td>
+                                    <td>0</td>
+                                    <td><span class="status active">Activo</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view" title="Ver detalles"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn edit" title="Editar"><i class="fas fa-edit"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>PROV005</td>
+                                    <td><img src="../img/logo-solera.jpg" alt="Cervecería Solera" class="product-thumbnail"></td>
+                                    <td>Cervecería Solera</td>
+                                    <td>Luis Torres</td>
+                                    <td>+58 212-555-9876</td>
+                                    <td>ventas@solera.com</td>
+                                    <td>1</td>
+                                    <td><span class="status active">Activo</span></td>
+                                    <td class="actions">
+                                        <button class="action-btn view" title="Ver detalles"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn edit" title="Editar"><i class="fas fa-edit"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Reportes Section -->
+            <section class="content-section" id="reportes-section">
+                <div class="section-header">
+                    <h2>Reportes</h2>
+                </div>
+                
+                <div class="dashboard-cards">
+                    <div class="dashboard-card">
+                        <div class="card-icon"><i class="fas fa-file-alt"></i></div>
+                        <div class="card-info">
+                            <h3>Órdenes por Proveedor</h3>
+                            <p>Distribución de órdenes por proveedor</p>
+                        </div>
+                        <a href="#" class="card-link"><i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="card-info">
+                            <h3>Tendencias Mensuales</h3>
+                            <p>Análisis de órdenes por mes</p>
+                        </div>
+                        <a href="#" class="card-link"><i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <div class="card-icon"><i class="fas fa-dollar-sign"></i></div>
+                        <div class="card-info">
+                            <h3>Gastos por Producto</h3>
+                            <p>Análisis de gastos por tipo de producto</p>
+                        </div>
+                        <a href="#" class="card-link"><i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <div class="card-icon"><i class="fas fa-clock"></i></div>
+                        <div class="card-info">
+                            <h3>Tiempos de Entrega</h3>
+                            <p>Análisis de tiempos de entrega por proveedor</p>
+                        </div>
+                        <a href="#" class="card-link"><i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Generar Reporte</h3>
+                    </div>
+                    
+                    <div class="card-body">
+                        <form class="form-grid">
+                            <div class="form-group">
+                                <label for="tipo-reporte">Tipo de Reporte</label>
+                                <select id="tipo-reporte" required>
+                                    <option value="">Seleccione un tipo de reporte</option>
+                                    <option value="ordenes-proveedor">Órdenes por Proveedor</option>
+                                    <option value="tendencias">Tendencias Mensuales</option>
+                                    <option value="gastos-producto">Gastos por Producto</option>
+                                    <option value="tiempos-entrega">Tiempos de Entrega</option>
+                                    <option value="productos-reposicion">Productos en Reposición</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="formato-reporte">Formato</label>
+                                <select id="formato-reporte" required>
+                                    <option value="pdf">PDF</option>
+                                    <option value="excel">Excel</option>
+                                    <option value="csv">CSV</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="fecha-inicio-reporte">Fecha Inicio</label>
+                                <input type="date" id="fecha-inicio-reporte" value="2025-01-01">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="fecha-fin-reporte">Fecha Fin</label>
+                                <input type="date" id="fecha-fin-reporte" value="2025-07-01">
+                            </div>
+                            
+                            <div class="form-actions full-width">
+                                <button type="button" class="primary-btn"><i class="fas fa-file-download"></i> Generar Reporte</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Configuración Section -->
+            <section class="content-section" id="configuracion-section">
+                <div class="section-header">
+                    <h2>Configuración</h2>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Configuración de Órdenes de Reposición</h3>
+                    </div>
+                    
+                    <div class="card-body">
+                        <form class="form-grid">
+                            <div class="form-group">
+                                <label for="umbral-stock">Umbral de Stock para Reposición</label>
+                                <input type="number" id="umbral-stock" min="1" value="100">
+                                <p class="form-help">Cantidad mínima de unidades para generar orden de reposición automática</p>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="notificaciones-email">Notificaciones por Email</label>
+                                <select id="notificaciones-email">
+                                    <option value="si">Activadas</option>
+                                    <option value="no">Desactivadas</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="destinatarios-email">Destinatarios de Notificaciones</label>
+                                <input type="text" id="destinatarios-email" value="compras@acaucab.com, gerencia@acaucab.com">
+                                <p class="form-help">Separar múltiples emails con comas</p>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="aprobacion-automatica">Aprobación Automática</label>
+                                <select id="aprobacion-automatica">
+                                    <option value="no">Desactivada</option>
+                                    <option value="si">Activada</option>
+                                </select>
+                                <p class="form-help">Aprobar automáticamente órdenes por debajo de cierto monto</p>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="monto-aprobacion">Monto Máximo para Aprobación Automática</label>
+                                <input type="number" id="monto-aprobacion" min="0" step="0.01" value="500.00">
+                                <p class="form-help">Órdenes por debajo de este monto se aprobarán automáticamente</p>
+                            </div>
+                            
+                            <div class="form-actions full-width">
+                                <button type="button" class="primary-btn">Guardar Configuración</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <!-- Modal para Ver Detalles de Orden -->
+    <div class="modal" id="ver-orden-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Detalles de Orden de Reposición</h3>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="order-details">
+                    <div class="order-header">
+                        <div class="order-info">
+                            <h4>Orden #ORD001</h4>
+                            <p><strong>Fecha de Generación:</strong> 01/07/2025</p>
+                            <p><strong>Estado:</strong> <span class="status pending">Pendiente de Aprobación</span></p>
+                        </div>
+                        <div class="order-provider">
+                            <h4>Proveedor</h4>
+                            <p><strong>Nombre:</strong> Empresas Polar</p>
+                            <p><strong>Contacto:</strong> Juan Rodríguez</p>
+                            <p><strong>Teléfono:</strong> +58 212-555-1234</p>
+                            <p><strong>Email:</strong> ventas@polar.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="order-products">
+                        <h4>Productos</h4>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Producto</th>
+                                    <th>Tipo</th>
+                                    <th>Stock Actual</th>
+                                    <th>Cantidad Solicitada</th>
+                                    <th>Precio Unitario</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>PRD001</td>
+                                    <td>Pilsen 355ml</td>
+                                    <td>Pilsener</td>
+                                    <td>95</td>
+                                    <td>150</td>
+                                    <td>$2.50</td>
+                                    <td>$375.00</td>
+                                </tr>
+                                <tr>
+                                    <td>PRD006</td>
+                                    <td>Light 355ml</td>
+                                    <td>Light</td>
+                                    <td>85</td>
+                                    <td>200</td>
+                                    <td>$2.60</td>
+                                    <td>$520.00</td>
+                                </tr>
+                                <tr>
+                                    <td>PRD010</td>
+                                    <td>ICE 355ml</td>
+                                    <td>Lager</td>
+                                    <td>90</td>
+                                    <td>150</td>
+                                    <td>$2.35</td>
+                                    <td>$352.50</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="6" class="text-right"><strong>Total:</strong></td>
+                                    <td><strong>$1,247.50</strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    
+                    <div class="order-notes">
+                        <h4>Notas</h4>
+                        <p>Orden generada automáticamente por el sistema debido a que los productos alcanzaron el umbral mínimo de stock (100 unidades).</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="secondary-btn">Cerrar</button>
+                <button class="success-btn approve-btn"><i class="fas fa-check"></i> Aprobar Orden</button>
+                <button class="export-btn"><i class="fas fa-download"></i> Descargar</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de Confirmación de Aprobación -->
+    <div class="modal" id="aprobar-orden-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Aprobar Orden de Reposición</h3>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>¿Está seguro que desea aprobar la orden de reposición <strong>#ORD001</strong>?</p>
+                <p>Esta acción enviará la orden al proveedor <strong>Empresas Polar</strong> por un monto total de <strong>$1,247.50</strong>.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="secondary-btn">Cancelar</button>
+                <button class="success-btn"><i class="fas fa-check"></i> Confirmar Aprobación</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de Confirmación de Rechazo -->
+    <div class="modal" id="rechazar-orden-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Rechazar Orden de Reposición</h3>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>¿Está seguro que desea rechazar la orden de reposición <strong>#ORD001</strong>?</p>
+                <div class="form-group full-width">
+                    <label for="motivo-rechazo">Motivo del Rechazo:</label>
+                    <textarea id="motivo-rechazo" rows="3" placeholder="Indique el motivo del rechazo..." required></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="secondary-btn">Cancelar</button>
+                <button class="error-btn"><i class="fas fa-times"></i> Confirmar Rechazo</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Cambiar entre secciones
+        document.querySelectorAll('.sidebar-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Actualizar menú activo
+                document.querySelectorAll('.sidebar-nav li').forEach(item => {
+                    item.classList.remove('active');
+                });
+                this.parentElement.classList.add('active');
+                
+                // Mostrar sección correspondiente
+                const sectionId = this.getAttribute('data-section');
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.getElementById(sectionId + '-section').classList.add('active');
+            });
+        });
+        
+        // Toggle sidebar en móvil
+        document.querySelector('.toggle-sidebar').addEventListener('click', function() {
+            document.querySelector('.dashboard-sidebar').classList.toggle('active');
+        });
+        
+        // Ver detalles de orden
+        document.querySelectorAll('.action-btn.view').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.getElementById('ver-orden-modal').classList.add('active');
+            });
+        });
+        
+        // Aprobar orden
+        document.querySelectorAll('.action-btn.approve, .approve-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.getElementById('aprobar-orden-modal').classList.add('active');
+            });
+        });
+        
+        // Rechazar orden
+        document.querySelectorAll('.action-btn.reject').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.getElementById('rechazar-orden-modal').classList.add('active');
+            });
+        });
+        
+        // Cerrar modales
+        document.querySelectorAll('.close-modal, .modal .secondary-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -16,16 +16,11 @@
 * dashboard_gestion_ventas (CRUD ventas, gestion de puntos)
 * dashboard_gestion_promociones (CRUD promociones, editor de DiarioDeCerveza)
 * dashboard_gestion_eventos (CRUD eventos)
+* dashboard_gestion_ordenes_reposicion
+
 
 
 ## Interfaces faltantes
-
-### Jefe de Compras
-
-* Dashboard de Órdenes de Reposición
-
-* Gestión de Órdenes de Reposición
-
 
 ### Jefe de Pasillos
 
